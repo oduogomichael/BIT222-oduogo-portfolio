@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ouma portfolio</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="mikyport.css" /> -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --black: #333;
+  --black2: #333;
+  --white: #fff;
+  --white2: #fff;
+  --button: #2196f3;
+}
+
+.dark {
+  --black: #fff;
+  --black2: #444;
+  --white: #333;
+  --white2: #444;
+  --button: #2196f3;
+}
+
+body {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--button); 
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--white2);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: width .5s, left .5s;
+  background: grey;
+  color: white;
+}
+
+.navigation.active {
+  width: 0;
+}
+
+.navigation ul {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  color: white;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  white-space: normal;
+  display: flex;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  transition: .5s;
+}
+
+.navigation ul li a:hover {
+  opacity: 1;
+}
+
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  height: 100%;
+  overflow: auto;
+  left: 300px;
+  background: var(--white);
+  min-height: 100vh;
+  transition: .5s;
+}
+
+.main.active {
+  width: calc(100% - 0px);
+  left: 0px;
+}
+
+.main .topbar {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 300px);
+  left: 300px;
+  background: var(--white2);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  height: 60px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: .5s;
+}
+
+.main .topbar.active {
+  width: calc(100% - 0px);
+  left: 0px;
+}
+
+.main .topbar .logo {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main .topbar .toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: var(--black);
+  transition: .5s;
+}
+
+.main .topbar .toggle:hover {
+  color: var(--button);
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.banner .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner .img-bx {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.banner .img-bx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h3 {
+  position: relative;
+  font-size: 1.4em;
+  color: var(--black);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+p {
+  color: #777;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  background: var(--black2);
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.btn:hover {
+  background: var(--button);
+}
+
+.social-media {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+}
+
+.social-media li {
+  list-style: none;
+}
+
+.social-media li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.05);
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1.2em;
+  transition: .5s;
+}
+
+.social-media li a:hover {
+  background: var(--button);
+  color: #fff;
+}
+
+.adjust {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 40px;
+  padding-top: 80px;
+  background: var(--white);
+  color: var(--black);
+  display: inline-block;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title h2 {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.title h2::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: -10px;
+  width: 50px;
+  height: 1px;
+  background: var(--black);
+}
+
+.about .content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.about .content .text-bx {
+  width: 49%;
+  min-width: 49%;
+}
+
+
+.about .content .img-bx {
+  margin-left: 40px;
+}
+
+.about .content .img-bx img {
+  max-width: 100%;
+}
+
+.services .content {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin: 40px 0;
+}
+
+.services .content .service-bx {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--white2);
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+}
+
+.services .content .service-bx:hover {
+  filter: brightness(.98);
+}
+
+.services .content .service-bx img {
+  max-width: 50px;
+}
+
+.services .content .service-bx h2 {
+  font-size: 1.1em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--black);
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.services .content .service-bx p {
+  text-align: center;
+}
+
+.projects .content {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin: 40px 0;
+}
+
+.projects .content .work-bx {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.projects .content .work-bx .img-bx {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(0);
+  transition: .5s ease-in-out;
+}
+
+.projects .content .work-bx:hover .img-bx {
+  transform: translateY(-100%);
+}
+
+.projects .content .work-bx .img-bx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projects .content .work-bx .text-bx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100%);
+  transition: .5s ease-in-out;
+}
+
+.projects .content .work-bx:hover .text-bx {
+  transform: translateY(0);
+}
+
+.projects .content .work-bx .text-bx h3 {
+  color: #fff;
+  font-size: 1em;
+}
+
+
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact .contact-form {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20;
+  border: 15px gold solid;
+
+}
+
+.contact .contact-form .row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.contact .contact-form .row-2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact .contact-form .row input,
+.contact .contact-form .row-2 textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: var(--black);
+  background: var(--white2);
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact .contact-form .row-2 textarea {
+  resize: none;
+  height: 200px;
+}
+
+.contact .contact-form .row-2 input[type="submit"] {
+  background: var(--black2);
+  color: #fff;
+  padding: 10px 30px;
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  max-width: 150px;
+  border: none;
+  transition: .5s;
+}
+
+.contact .contact-form .row-2 input[type="submit"]:hover {
+  background: var(--button);
+}
+
+.copyright {
+  position: relative;
+  bottom: 0;
+  padding: 10px 40px;
+  text-align: center;
+}
+
+/* SWITH THEME */
+
+.theme-switch {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  width: 30px;
+  height: 30px;
+  background: var(--black);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+}
+
+.theme-switch:hover {
+  filter: brightness(1.7);
+}
+
+.theme-switch::before {
+  content: '\f186';
+  font-family: fontAwesome;
+}
+
+.dark .theme-switch::before {
+  content: '\f185';
+}
+
+.theme-switch::after {
+  content: 'Switch to Dark Mode';
+  position: absolute;
+  left: 40px;
+  font-size: 0.7em;
+  color: var(--black);
+  white-space: nowrap;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.dark .theme-switch:hover {
+  filter: brightness(.6);
+}
+
+.dark .theme-switch::after {
+  content: 'Switch to Light Mode';
+}
+
+.dark .navigation {
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.dark .main .topbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.dark p {
+  color: var(--black);
+}
+
+.dark .content .service-bx img {
+  filter: invert(1);
+}
+
+.dark .services .content .service-bx:hover {
+  filter: brightness(.9);
+}
+
+.dark .projects .content .work-bx .text-bx {
+  background: var(--black2);
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .navigation {
+    left: -100%;
+  }
+  .navigation.active {
+    left: 0;
+    width: 100%;
+  }
+  
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 100%;
+  }
+
+  .main .topbar {
+    width: 100%;
+    left: 0;
+    padding: 0 20px;
+  }
+
+  .navigation ul {
+    padding: 20px 20px;
+  }
+
+  .banner .img-bx {
+    width: 250px;
+    height: 250px;
+  }
+  .banner h3, .banner p {
+    text-align: center;
+  }
+
+  .adjust {
+    padding: 0 20px;
+    padding-top: 80px;
+  }
+
+  .about .content {
+    flex-direction: column;
+  }
+
+  .about .content .text-bx {
+    width: 100%;
+    min-width: 100%;
+  }
+  .about .content .img-bx {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .projects .content {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .projects .content {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .theme-switch {
+    left: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .services .content {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .projects .content {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .testimonials .content {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .contact .contact-form .row {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .contact {
+    margin-bottom: 100px;
+  }
+
+  .copyright {
+    padding: 10px 20px;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <!-- this is the start of nav bar -->
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li><a href="#banner" onclick="toggleMenu()">Home</a></li>
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#products" onclick="toggleMenu()">products</a></li>
+          <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <!-- <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li> -->
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a>
+          </li>
+        </ul>
+
+        <div class="theme-switch"></div>
+      </div>
+      <div class="main">
+        <div class="topbar">
+          <a href="#" class="logo">OUMA</a>
+          <div class="toggle">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <section id="banner" class="banner">
+          <div class="content">
+            <div class="img-bx">
+              <img src="michael.jpeg" alt="user image" />
+            </div>
+
+            <h3>Michael ouma</h3>
+            <p>I'm a Full Stack Web Developer.</p>
+            <a href="" class="btn">LEARN MORE</a>
+            <ul class="social-media">
+              <li>
+                <a href="#"
+                  ><i class="fa fa-linkedin" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa fa-instagram" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa fa-facebook" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="about" class="about adjust">
+          <div class="title">
+            <h2>About Me</h2>
+          </div>
+
+          <div class="content">
+            <div class="text-bx">
+              <p>
+                I am michael, a web developer in kibabii
+              </br>
+              </br>
+              I am also a web designer 
+               this is another about myself
+            </div>
+            <div class="img-bx">
+              <img src="ouma.jpeg" alt="">
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="services adjust">
+          <div class="title">
+            <h2>Our Services</h2>
+            <p>Michael enter the services you offer here,remember to include your academic skills on programming</p>
+          </div>
+
+          <div class="content">
+            <div class="service-bx">
+              <img src="ouma.jpeg" alt="">
+              <h2>Web Design</h2>
+              <p>Michael talk about web design(35 words).</p>
+            </div>
+            <div class="service-bx">
+              <img src="screen-1.png" alt="">
+              <h2>Web development</h2>
+              <p>takk about web development(40 words)</p>
+            </div>
+            <div class="service-bx">
+              <img src="juli.jpeg" alt="">
+              <h2>Graphic design</h2>
+              <p>we offer services on web design</p>
+            </div>
+            <div class="service-bx">
+              <img src="screen-2.png" alt="">
+              <h2>Programming</h2>
+              <p>we offer services on programming </p>
+            </div>
+          </div>
+        </section>
+        <!-- THIS IS START OF PROJECT SECTION -->
+
+        <section id="projects" class="projects adjust">
+          <div class="title">
+            <h2>Recent Work</h2>
+            <p>As OUMA technologies we have done some projects which we have finished.</p>
+          </div>
+
+          <div class="content">
+            <div class="work-bx">
+              <div class="img-bx">
+                <img src="IMPORTING DATA INTO SPSS.docx" alt="">
+              </div>
+              <div class="text-bx">
+                <h3>Project 1</h3>
+              </div>
+            </div>
+            <div class="work-bx">
+              <div class="img-bx">
+                <img src="pro.png" alt="">
+              </div>
+              <div class="text-bx">
+                <h3>Project 2</h3>
+              </div>
+            </div>
+            <div class="work-bx">
+              <div class="img-bx">
+                <img src="code.png" alt="">
+              </div>
+              <div class="text-bx">
+                <h3>Project 3</h3>
+              </div>
+            </div>
+            <div class="work-bx">
+              <div class="img-bx">
+                <img src="icon-1.png" alt="">
+              </div>
+              <div class="text-bx">
+                <h3>Project 4</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+       <!--  <section id="testimonials" class="testimonials adjust">
+          <div class="title">
+            <h2>Testimonials</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis a inventore soluta.</p>
+          </div>
+
+          <div class="content">
+            <div class="testimonials-bx">
+              <div class="img-bx">
+                <img src="assets//imgs/person-1.jpg" alt="">
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Corrupti aspernatur, libero magni dolorum quam sit, assumenda pariatur 
+                eos veritatis quos sint debitis eius vero ea voluptatum eum laudantium 
+                ducimus repudiandae.
+              </p>
+              <h4>
+                Someone Famouse
+                </br>
+                <span>Website Designer</span>
+              </h4>
+            </div>
+            <div class="testimonials-bx">
+              <div class="img-bx">
+                <img src="assets//imgs/person-2.jpg" alt="">
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Corrupti aspernatur, libero magni dolorum quam sit, assumenda pariatur 
+                eos veritatis quos sint debitis eius vero ea voluptatum eum laudantium 
+                ducimus repudiandae.
+              </p>
+              <h4>
+                Someone Famouse
+                </br>
+                <span>Website Designer</span>
+              </h4>
+            </div>
+            <div class="testimonials-bx">
+              <div class="img-bx">
+                <img src="assets//imgs/person-3.jpg" alt="">
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Corrupti aspernatur, libero magni dolorum quam sit, assumenda pariatur 
+                eos veritatis quos sint debitis eius vero ea voluptatum eum laudantium 
+                ducimus repudiandae.
+              </p>
+              <h4>
+                Someone Famouse
+                </br>
+                <span>Website Designer</span>
+              </h4>
+            </div>
+          </div>
+        </section>
+
+ -->
+ <!-- this is the start of contact form -->
+        <section id="contact" class="contact adjust">
+          <div class="title">
+            <h2>CONTACT US</h2>
+            <p>Welcome to OUMA technologies</p>
+          </div>
+
+          <div class="contact-form">
+            <div class="row">
+              <input type="text" name="" placeholder="First Name">
+              <input type="text" name="" placeholder="Last Name">
+            </div>
+            <div class="row">
+              <input type="email" name="" placeholder="email">
+              <input type="text" name="" placeholder="phone number.">
+            </div>
+            <div class="row-2">
+              <textarea name="" placeholder="Message"></textarea>
+            </div>
+            <div class="row-2">
+              <input type="submit" value="Send">
+            </div>
+          <div class="row-3">
+            <input type="Full name"name=""placeholder="Michael Ouma">
+            <input type ="email"name=""placeholder="oduogomichael22@gmail.com">
+            <input type="phone number"name=""placeholder="0702073941">
+          </div>
+        </section>
+
+        <div class="copyright">
+          <p>Copyright @ 2024 ouma technologies All Right Reserved</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const toggle = document.querySelector(".toggle");
+      const topbar = document.querySelector(".topbar");
+      const navigation = document.querySelector(".navigation");
+      const main = document.querySelector(".main");
+      const themeSwitch = document.querySelector(".theme-switch");
+      const body = document.querySelector("body");
+
+      toggle.onclick = function () {
+        toggle.classList.toggle("active");
+        topbar.classList.toggle("active");
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+
+      function toggleMenu() {
+        const navigation = document.querySelector(".navigation");
+        const main = document.querySelector(".main");
+
+        navigation.classList.remove('active');
+        main.classList.remove('active');
+      }
+      
+      themeSwitch.onclick = function () {
+        body.classList.toggle("dark");
+      }
+    </script>
+  </body>
+</html>
